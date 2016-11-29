@@ -8,11 +8,12 @@
 
 "use strict";
 function update_pkg_loss() {
-    var val = $("#pkg_loss").text;
+    var val = $("#pkg_loss_amount").val();
     alert(val);
 }
 
 
 function update_latency() {
-
+    var val = $("#latency_amount").val();
+    alert(val);
 }
