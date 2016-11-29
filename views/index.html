@@ -2,13 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/utility.js"></script>
+    <script>
+        $( function() {
+            $( "#slider-range-max" ).slider({
+                range: "max",
+                min: 0,
+                max: 100,
+                value: 0,
+                slide: function( event, ui ) {
+                    $( "#amount" ).val( ui.value );
+                }
+            });
+            $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
+        } );
+    </script>
     <title>Geo-Distributed</title>
 </head>
 <body>
-    <h1>Editing {{.Title}}</h1>
+    <h1>Datacenter status</h1>
+    <div>
+        <table class="table table-striped">
+            <thead><td>Partition Id</td><td>DCList</td><td>CreateTimestamp</td><td>localRead</td><td>globalRead</td></thead>
+            <tbody><td>1</td><td>1</td><td>5345</td><td>10</td><td>10</td></tbody>
+        </table>
+    </div>
+    <h1>Traffic control</h1>
+    <p>
+        <label for="amount">Minimum number of bedrooms:</label>
+        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
+    <div id="slider-range-max" class="custom-slider"></div>
 
-    <form action="/view" method="POST">
-        <div><textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}</textarea></div>
+    <form action="/update" method="POST">
         <div><input type="submit" value="Submit"></div>
     </form>
 </body>
