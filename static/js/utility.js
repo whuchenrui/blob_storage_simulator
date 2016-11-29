@@ -6,4 +6,13 @@
  * All rights reserved!
  ***********************************/
 
+"use strict";
+function update_pkg_loss() {
+    var val = $("#pkg_loss").text;
+    alert(val);
+}
 
+
+function update_latency() {
+
+}
