@@ -20,6 +20,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func TcUpdateHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
 	fmt.Println("view", r)
 	out, err := exec.Command("date").Output()
 	if err != nil {
