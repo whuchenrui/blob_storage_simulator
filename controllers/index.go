@@ -3,10 +3,16 @@ package main
 import (
 	"net/http"
 	"github.com/whuchenrui/blob_storage/models"
+	"github.com/whuchenrui/blob_storage/config"
 )
 
+func Init(){
+	config.Tc = &config.TrafficControl{PkgLoss: 0, Latency: 0, Reorder: 0}
+}
 
 func main() {
+	Init()
+
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/css/", fs)
 	http.Handle("/js/", fs)

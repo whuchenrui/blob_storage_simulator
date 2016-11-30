@@ -10,31 +10,9 @@
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/utility.js"></script>
     <script>
-        $( function() {
-            $( "#pkg_loss" ).slider({
-                range: "max",
-                min: 0,
-                max: 100,
-                value: 0,
-                slide: function( event, ui ) {
-                    $( "#pkg_loss_amount" ).val( ui.value );
-                }
-            });
-            $( "#pkg_loss_amount" ).val( $( "#pkg_loss" ).slider( "value" ) );
-        } );
-
-        $( function() {
-            $( "#pkg_latency" ).slider({
-                range: "max",
-                min: 0,
-                max: 100,
-                value: 0,
-                slide: function( event, ui ) {
-                    $( "#latency_amount" ).val( ui.value );
-                }
-            });
-            $( "#latency_amount" ).val( $( "#pkg_latency" ).slider( "value" ) );
-        } );
+        $(document).ready(function () {
+            create_slider_for_tc();
+        });
     </script>
     <title>Geo-Distributed</title>
 </head>
@@ -52,12 +30,12 @@
         <div class="row height-40">
             <div class="col-sm-4">
                 <label for="pkg_loss_amount">Package loss percentage:</label>
-                <input type="text" class="width-40" id="pkg_loss_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                <input type="text" class="width-40" id="pkg_loss_amount" readonly style="border:0; color:#f6931f; font-weight:bold;" value="0">
             </div>
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-sm-8">
-                        <div id="pkg_loss" class="margin-top-5"></div>
+                        <div id="pkg_loss_slider" class="margin-top-5"></div>
                     </div>
                     <div class="col-sm-4">
                         <button class="btn btn-primary" onclick="update_pkg_loss()">Set</button>
@@ -65,18 +43,36 @@
                 </div>
             </div>
         </div>
+
         <div class="row height-40 margin-top-10">
             <div class="col-sm-4">
                 <label for="latency_amount">Network latency:</label>
-                <input type="text" class="width-40" id="latency_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                <input type="text" class="width-40" id="latency_amount" readonly style="border:0; color:#f6931f; font-weight:bold;" value="0">
             </div>
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-sm-8">
-                        <div id="pkg_latency" class="margin-top-5"></div>
+                        <div id="pkg_latency_slider" class="margin-top-5"></div>
                     </div>
                     <div class="col-sm-4">
                         <button class="btn btn-primary" onclick="update_latency()">Set</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row height-40 margin-top-10">
+            <div class="col-sm-4">
+                <label for="reorder_amount">Network reordering:</label>
+                <input type="text" class="width-40" id="reorder_amount" readonly style="border:0; color:#f6931f; font-weight:bold;" value="0">
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div id="pkg_reorder_slider" class="margin-top-5"></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn btn-primary" onclick="update_reorder()">Set</button>
                     </div>
                 </div>
             </div>

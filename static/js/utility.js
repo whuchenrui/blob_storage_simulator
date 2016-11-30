@@ -7,13 +7,43 @@
  ***********************************/
 
 "use strict";
-function update_pkg_loss() {
-    var val = $("#pkg_loss_amount").val();
-    alert(val);
+function create_slider_for_tc() {
+    $( "#pkg_loss_slider" ).slider({
+        range: "max",
+        min: 0,
+        max: 100,
+        value: 0,
+        slide: function( event, ui ) {
+            $( "#pkg_loss_amount" ).val( ui.value );
+        }
+    });
+
+    $( "#pkg_latency_slider" ).slider({
+        range: "max",
+        min: 0,
+        max: 100,
+        value: 0,
+        slide: function( event, ui ) {
+            $( "#latency_amount" ).val( ui.value );
+        }
+    });
+
+    $( "#pkg_reorder_slider" ).slider({
+        range: "max",
+        min: 0,
+        max: 100,
+        value: 0,
+        slide: function( event, ui ) {
+            $( "#reorder_amount" ).val( ui.value );
+        }
+    });
+}
+
+function ajaxCall(type, val) {
     $.ajax({
         url: "/update/tc",
         data: {
-            type: "Ajax",
+            type: type,
             value: val
         },
         success: function( result ) {
@@ -23,10 +53,22 @@ function update_pkg_loss() {
     });
 }
 
+function update_pkg_loss() {
+    var val = $("#pkg_loss_amount").val();
+    alert(val);
+    ajaxCall("1", val);
+}
 
 function update_latency() {
     var val = $("#latency_amount").val();
     alert(val);
+    ajaxCall("2", val);
+}
+
+function update_reorder() {
+    var val = $("#reorder_amount").val();
+    alert(val);
+    ajaxCall("3", val);
 }
 
 function show_ping() {
