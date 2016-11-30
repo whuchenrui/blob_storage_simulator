@@ -41,15 +41,13 @@
 
 <body>
     <div class="container">
+        <h1>Datacenter status</h1>
         <div class="row">
-            <h1>Datacenter status</h1>
             <table class="table table-striped">
                 <thead><td>Partition Id</td><td>DCList</td><td>CreateTimestamp</td><td>localRead</td><td>globalRead</td></thead>
                 <tbody><td>1</td><td>1</td><td>5345</td><td>10</td><td>10</td></tbody>
             </table>
         </div>
-    </div>
-    <div class="container">
         <h1>Traffic control</h1>
         <div class="row height-40">
             <div class="col-sm-4">
@@ -67,7 +65,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row height-40 margin-top-10">
             <div class="col-sm-4">
                 <label for="latency_amount">Network latency:</label>
@@ -83,6 +80,25 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <h1>System info</h1>
+        <div class="row">
+            <div class="col-sm-1">
+                <button class="btn btn-primary" onclick="show_ping()">Ping</button>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary" onclick="show_cpu()">CPU</button>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary" onclick="show_memory()">Memory</button>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary" onclick="show_bandwidth()">Bandwidth</button>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <textarea class="col-sm-8" id="system_output"></textarea>
         </div>
     </div>
 </body>

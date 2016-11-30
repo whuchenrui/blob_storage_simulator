@@ -12,6 +12,6 @@ func main() {
 	http.Handle("/js/", fs)
 
 	http.HandleFunc("/index", models.IndexHandler)
-	http.HandleFunc("/update", models.TcUpdateHandler)
+	http.HandleFunc("/update/tc", models.TcUpdateHandler)
 	http.ListenAndServe(":8080", nil)
 }

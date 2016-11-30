@@ -3,7 +3,9 @@ package models
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
+	"os/exec"
 )
 
 type data struct {
@@ -19,5 +21,10 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 
 func TcUpdateHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("view", r)
-
+	out, err := exec.Command("date").Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := string(out[:])
+	fmt.Fprint(w, s)
 }
