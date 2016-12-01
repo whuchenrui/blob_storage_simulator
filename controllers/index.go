@@ -21,5 +21,6 @@ func main() {
 	http.HandleFunc("/update/tc", models.TcUpdateHandler)
 	http.HandleFunc("/status/ping", models.PingHandler)
 	http.HandleFunc("/status/cpu", models.CpuHandler)
+	http.HandleFunc("/status/tc", models.TcHandler)
 	http.ListenAndServe(":8080", nil)
 }

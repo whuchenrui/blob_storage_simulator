@@ -92,8 +92,16 @@ function show_cpu() {
     });
 }
 
-function show_memory() {
-
+function show_tc() {
+    $.ajax({
+        url: "/status/tc",
+        data: {
+        },
+        success: function( result ) {
+            console.log("finish Ajax call");
+            $( "#system_output" ).html( result );
+        }
+    });
 }
 
 function show_bandwidth() {

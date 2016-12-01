@@ -33,6 +33,13 @@ func CpuHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func TcHandler(w http.ResponseWriter, r *http.Request) {
+	cmd := "tc qdisc show"
+	fmt.Println(cmd)
+	cmd = ExecCmd(cmd)
+	fmt.Fprint(w, cmd)
+}
+
 func TcUpdateHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("before: ", *config.Tc)
 	UpdateTcConfig(r)
