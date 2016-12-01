@@ -32,9 +32,9 @@ sudo /bin/env GOPATH=$HOME/workspace/gowork go get -u github.com/enirinth/blob-s
 sudo /bin/env GOPATH=$HOME/workspace/gowork go get -u github.com/whuchenrui/blob_storage_simulator
 
 # Useful utilitiesq
-echo "alias cd582h='cd \$HOME/workspace/gowork/src/github.com/enirinth/blob-storage'" >> ~/.bashrc
-echo "alias cd582r='cd \$HOME/workspace/gowork/src/github.com/whuchenrui/blob_storage_simulator'" >> ~/.bashrc
-echo "alias sugo='sudo /bin/env GOPATH=\$HOME/workspace/gowork'" >> ~/.bashrc
+alias cd582h='cd $HOME/workspace/gowork/src/github.com/enirinth/blob-storage'
+alias cd582r='cd $HOME/workspace/gowork/src/github.com/whuchenrui/blob_storage_simulator'
+alias sugo='sudo /bin/env GOPATH=\$HOME/workspace/gowork'
 
 # Remember to source ~/.bashrc after running this script
 
