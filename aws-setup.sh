@@ -22,9 +22,9 @@ sudo ln -s /usr/local/go/bin/go /usr/bin/go
 
 # Go path setttings
 sudo mkdir -p $HOME/workspace/gowork
-echo "export GOROOT=/usr/local/go" >> ~/.bashrc
-echo "export GOPATH=$HOME/workspace/gowork" >> ~/.bashrc
-echo "export PATH=\$GOPATH/bin:\$GOROOT/bin:\$PATH" >> ~/.bashrc
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/workspace/gowork
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # Get project source code (and dependencies)
 sudo /bin/env GOPATH=$HOME/workspace/gowork go get -u github.com/Sirupsen/logrus
