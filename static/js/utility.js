@@ -47,7 +47,7 @@ function ajaxCall(type, val) {
             value: val
         },
         success: function( result ) {
-            alert("get result"+result);
+            console.log("finish Ajax call");
             $( "#system_output" ).html( result );
         }
     });
@@ -55,28 +55,41 @@ function ajaxCall(type, val) {
 
 function update_pkg_loss() {
     var val = $("#pkg_loss_amount").val();
-    alert(val);
     ajaxCall("1", val);
 }
 
 function update_latency() {
     var val = $("#latency_amount").val();
-    alert(val);
     ajaxCall("2", val);
 }
 
 function update_reorder() {
     var val = $("#reorder_amount").val();
-    alert(val);
     ajaxCall("3", val);
 }
 
 function show_ping() {
-
+    $.ajax({
+        url: "/status/ping",
+        data: {
+        },
+        success: function( result ) {
+            console.log("finish Ajax call");
+            $( "#system_output" ).html( result );
+        }
+    });
 }
 
 function show_cpu() {
-
+    $.ajax({
+        url: "/status/cpu",
+        data: {
+        },
+        success: function( result ) {
+            console.log("finish Ajax call");
+            $( "#system_output" ).html( result );
+        }
+    });
 }
 
 function show_memory() {

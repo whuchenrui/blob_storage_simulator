@@ -14,6 +14,7 @@ type TrafficControl struct {
 	PkgLoss int     // match 1
 	Latency int     // match 2
 	Reorder int     // match 3
+	Init    bool
 }
 
 var Tc * TrafficControl
