@@ -26,20 +26,18 @@ wget http://download.opensuse.org/repositories/shells:fish:release:2/RHEL_7/shel
 yum install fish
 
 # Go path setttings for fish shell
-sudo mkdir -p $HOME/workspace/gowork
+mkdir -p $HOME/workspace/gowork
 set -x GOROOT /usr/local/go
 set -x GOPATH $HOME/workspace/gowork
 set -x PATH $PATH $GOPATH/bin $GOROOT/bin
 
 # Get project source code (and dependencies)
-sudo /bin/env GOPATH=$HOME/workspace/gowork go get -u github.com/Sirupsen/logrus
-sudo /bin/env GOPATH=$HOME/workspace/gowork go get -u github.com/enirinth/blob-storage
-sudo /bin/env GOPATH=$HOME/workspace/gowork go get -u github.com/whuchenrui/blob_storage_simulator
+go get -u github.com/Sirupsen/logrus
+go get -u github.com/enirinth/blob-storage
+go get -u github.com/whuchenrui/blob_storage_simulator
 
 # Useful utilities which works for bash, for fish need to create function
 alias cd582h='cd $HOME/workspace/gowork/src/github.com/enirinth/blob-storage'
 alias cd582r='cd $HOME/workspace/gowork/src/github.com/whuchenrui/blob_storage_simulator'
-alias sugo='sudo /bin/env GOPATH=\$HOME/workspace/gowork'
 
 # Remember to source ~/.bashrc after running this script
-
