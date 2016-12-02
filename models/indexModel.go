@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"github.com/whuchenrui/blob_storage_simulator/config"
 	"html/template"
-	"log"
+	//"log"
 	"net/http"
 	"os/exec"
 	"strconv"
 	"strings"
+	"bytes"
 )
 
 type data struct {
@@ -17,7 +18,9 @@ type data struct {
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("index", r)
+	r.ParseForm()
+	req := r.Form
+	fmt.Println("index", req)
 	t, _ := template.ParseFiles("views/index.html")
 	t.Execute(w, &data{Title: "pars", Body: "World"})
 }
@@ -95,15 +98,22 @@ func GetTcCmdStr()  string{
 	return cmd
 }
 
-func ExecCmd(cmd string) string {
-	parts := strings.Fields(cmd)
+func ExecCmd(cmdStr string) string {
+	parts := strings.Fields(cmdStr)
 	head := parts[0]
 	parts = parts[1:]
 
-	out, err := exec.Command(head, parts...).Output()
+	cmd := exec.Command(head, parts...)
+	var out bytes.Buffer
+	var stderr bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = &stderr
+	err := cmd.Run()
+
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
+		return " "
 	}
-	res := string(out[:])
-	return res
+	fmt.Println("Result: " + out.String())
+	return out.String()
 }
